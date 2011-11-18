@@ -6,14 +6,6 @@ gem 'sqlite3'
 gem 'slim'
 gem 'devise'
 
-gem 'dm-core',           '~> 1.2.0'
-gem 'dm-redis-adapter',  '~> 0.5.1'
-gem 'dm-serializer',     '~> 1.2.0'
-gem 'dm-timestamps',     '~> 1.2.0'
-gem 'dm-rails',          '~> 1.2.0'
-gem 'dm-validations',    '~> 1.2.0' # Do not include if using data_mapper_active_model
-gem 'dm-devise',         '~> 1.5.0'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
