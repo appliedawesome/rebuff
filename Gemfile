@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra', '>= 1.3.1'
+gem 'sinatra-contrib', :require => false
 
 DM_VERSION = "1.2.0"
 gem 'dm-core', DM_VERSION
