@@ -1,11 +1,16 @@
 defaults: &defaults
-  adapter: redis
-  
+  adapter: 'redis'
+  host: 'localhost'
+  port: '6379'
+
 development:
   <<: *defaults
+  db: '2'
 
 test:
   <<: *defaults
+  db: '3'
 
 production:
   <<: *defaults
+  db: '1'
