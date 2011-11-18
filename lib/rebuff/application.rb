@@ -4,7 +4,7 @@ require 'uri'
 module Rebuff
   class Application < Sinatra::Base
     configure do
-      db = URI.parse(ENV['DATABASE_URL'] || 'redis://localhost:6379/0')
+      db = URI.parse(ENV['REDISTOGO_URL'])
       set :app_file, __FILE__
       set :root, File.expand_path(File.join(File.dirname(__FILE__), "../../../"))
       enable :logging
