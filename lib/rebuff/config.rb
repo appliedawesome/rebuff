@@ -6,7 +6,7 @@ module Rebuff
       end
       
       def database
-        @database ||= YAML.load_file(config_path("database"))
+        @database ||= YAML.load_file(config_path("rebuff"))['database']
       end
       
       alias_method :db, :database
