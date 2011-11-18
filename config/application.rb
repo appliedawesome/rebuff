@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -14,6 +16,7 @@ module Rebuff
     config.generators do |g|
       g.template_engine :slim
       g.test_framework :rspec
+      g.orm :datamapper
     end
 
     # Settings in config/environments/* take precedence over those specified here.
