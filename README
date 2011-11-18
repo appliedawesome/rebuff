@@ -1,0 +1,45 @@
+Firewall as a Service
+
+Packet inspection for:
+- SQL injections
+- ???
+Mitigation of DoS and DDoS attacks
+Deny common attacks
+
+What's needed?
+
+- DNS roundrobin in front of...
+- ?x servers 
+- iptables for control
+- something to inspect every packet?
+
+
+class Rebuff
+  def call(env)
+    request = Rack::Request.new(env)
+    headers = Rack::Utils::HeaderHash.new
+    
+    env.each do |key, value|
+      if key =~ /HTTP_(.*)/
+        headers[$1] = value
+      end
+    end
+    
+    result = Net::HTTP.start(@host, @port) do |http|
+      method = rack_request.request_method
+      case method
+      when "GET", "HEAD", "DELETE", "OPTIONS", "TRACE"
+        req = Net::HTTP.const_get(method.capitalize).new(request.fullpath, headers)
+      when "PUT", "POST"
+        req = Net::HTTP.const_get(method.capitalize).new(request.fullpath, headers)
+      else
+        raise "Method not supported: #{method}"
+      end
+      
+      http.request(result)
+    end
+    
+    [result.code, Rack::Utils::HeaderHash.new(result.to_hash), [result.body]]
+  end
+end
+
